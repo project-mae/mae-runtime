@@ -21,4 +21,28 @@ final class MaeABITests: XCTestCase {
             }
         }
     }
+    func testHeaderDump() throws {
+            let header = constructRandomHeader()
+            XCTAssertEqual(header.dump().prefix(8), [0x7f, 0x4d, 0x41, 0x45, 0xff, header.codeSegmentSize, header.dataSegmentSize, header.maxStackSize])
+    }
+    func testHeaderConstruction() {
+        let first = Int.random(in: 0...255)
+        let second = Int.random(in: 0...(256-first))
+        let third = 256 - first - second
+        let code = UInt8(first)
+        let data = UInt8(second)
+        let stack = UInt8(third)
+        var rawBytes = [0x7f, 0x4d, 0x41, 0x45, 0xff, code, data, stack]
+        rawBytes.append(contentsOf: Array(repeating: 0, count: 248))
+        XCTAssertEqual(rawBytes, ObjectHeader(bytes: rawBytes)?.dump())
+    }
+    func constructRandomHeader() -> ObjectHeader {
+        let first = Int.random(in: 0...255)
+        let second = Int.random(in: 0...(256-first))
+        let third = 256 - first - second
+        let code = UInt8(first)
+        let data = UInt8(second)
+        let stack = UInt8(third)
+        return ObjectHeader(code, data, stack)
+    }
 }
