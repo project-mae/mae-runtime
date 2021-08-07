@@ -34,9 +34,6 @@ public enum Instruction : Equatable {
     
     case PutTop(value: UInt8)
     case PutBottom(value: UInt8)
-}
-
-extension Instruction : RawRepresentable {
     public init?(rawValue: UInt8) {
         let i = Int(rawValue)
         guard instructionLookupTable.count < i, let v = instructionLookupTable[i] else {
@@ -44,12 +41,6 @@ extension Instruction : RawRepresentable {
         }
         self = v
     }
-    
-    public var rawValue: UInt8 {
-       return UInt8(exactly: instructionLookupTable.firstIndex(of: self)!)!
-    }
-    
-    public typealias RawValue = UInt8
 }
 
 // temporary solution
