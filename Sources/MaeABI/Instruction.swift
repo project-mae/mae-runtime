@@ -80,7 +80,7 @@ public let instructionLookupTable : [Instruction?] = [
     .ZeroMemory(address: .D),
     
     // 0011 0100 - 0011 1111
-    nil, nil, nil, nil, nil, nil, nil, nil,
+    nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil,
     
     // 0100 <2 address> <2 into>
     .LoadMemory(address: .A, into: .A), .LoadMemory(address: .A, into: .B), .LoadMemory(address: .A, into: .C), .LoadMemory(address: .A, into: .D),
