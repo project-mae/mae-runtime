@@ -7,9 +7,9 @@ let package = Package(
     name: "MaeRuntime",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "MaeABI",
-            targets: ["MaeABI"]),
+        .library(name: "MaeABI", targets: ["MaeABI"]),
+        .library(name: "MaeAssembler", targets: ["MaeAssembler"]),
+        .executable(name: "masm", targets: ["MaeAssembler"])
     ],
     dependencies: [
         .package(
@@ -23,8 +23,18 @@ let package = Package(
             dependencies: [
                 .product(name: "Collections", package: "swift-collections")
             ]),
+        .target(
+            name: "MaeAssembler",
+            dependencies: [
+                .product(name: "Collections", package: "swift-collections"),
+                "MaeABI"
+            ]
+        ),
         .testTarget(
             name: "MaeABITests",
             dependencies: ["MaeABI"]),
+        .testTarget(
+            name: "MaeAssemblerTests",
+            dependencies: ["MaeAssembler"]),
     ]
 )
