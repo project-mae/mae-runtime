@@ -49,3 +49,31 @@ struct ObjectHeader {
     }
 }
 
+
+class Executable {
+    var header: ObjectHeader? = nil
+    var memory: [UInt8] = Array(repeating: 0, count: 256)
+
+    init(header: ObjectHeader?, memory: [UInt8]) {
+        precondition(memory.count == 256, "memory size must be 256 bytes")
+        self.header = header
+        self.memory = memory
+    }
+
+    init?(bytes: [UInt8]) {
+        guard bytes.count == 512 else {
+            return nil
+        }
+        header = ObjectHeader(bytes: Array(bytes.prefix(256)))
+        memory = Array(bytes.suffix(256))
+    }
+
+    func dump() -> [UInt8] {
+        var dump = [UInt8]()
+        // 256 byte header (maximum, mostly unused), 256 byte program,
+        dump.reserveCapacity(512)
+        dump.append(contentsOf: header?.dump() ?? Array(repeating: UInt8(0), count: 256))
+        dump.append(contentsOf: memory)
+        return dump
+    }
+}
