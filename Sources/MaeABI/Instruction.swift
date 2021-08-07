@@ -36,7 +36,7 @@ public enum Instruction : Equatable {
     case PutBottom(value: UInt8)
     public init?(rawValue: UInt8) {
         let i = Int(rawValue)
-        guard instructionLookupTable.count < i, let v = instructionLookupTable[i] else {
+        guard i < instructionLookupTable.count , let v = instructionLookupTable[i] else {
             return nil
         }
         self = v
