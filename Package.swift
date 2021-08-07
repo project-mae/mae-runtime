@@ -9,7 +9,7 @@ let package = Package(
     // Products define the executables and libraries a package produces, and make them visible to other packages.
     .library(name: "MaeABI", targets: ["MaeABI"]),
     .library(name: "MaeAssembler", targets: ["MaeAssembler"]),
-    .executable(name: "masm", targets: ["MaeAssembler"]),
+    .executable(name: "MaeCli", targets: ["MaeCli"]),
   ],
   dependencies: [
     .package(
@@ -30,6 +30,7 @@ let package = Package(
         "MaeABI",
       ]
     ),
+    .target(name: "MaeCli", dependencies: []),
     .testTarget(
       name: "MaeABITests",
       dependencies: ["MaeABI"]),
