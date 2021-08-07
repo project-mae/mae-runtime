@@ -1,5 +1,5 @@
-    import XCTest
-    @testable import MaeABI
+import XCTest
+@testable import MaeABI
 
 final class MaeABITests: XCTestCase {
     func testRegisterIndex() {
