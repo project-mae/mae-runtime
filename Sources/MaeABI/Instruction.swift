@@ -45,7 +45,7 @@ public enum Instruction : Equatable {
 
 // temporary solution
 // TODO: write better solution
-private let instructionLookupTable : [Instruction?] = [
+public let instructionLookupTable : [Instruction?] = [
     // 0000 0000 - 0000 0011
     .Halt,
     .Reset,
