@@ -30,4 +30,16 @@ final class MaeAssemblerTests: XCTestCase {
 			XCTAssertEqual(lexer.next(), Token.Literal(i))
 		}
 	}
+	func testSingleIdentifierLexing() {
+		XCTExpectFailure("Not yet implemented.")
+		let inputs = [
+			"HLT", "ZRG", "CP", "SWP", "ZRM", "LDA", "STA", "ADD", "SUB", "MUL", "DIV",
+			"AND", "OR", "NOT", "XOR",
+		]
+		for i in inputs {
+			let lexer = Lexer(i.data(using: .ascii)!)
+			XCTAssertEqual(lexer.next(), Token.Identifier(i))
+		}
+	}
+
 }
