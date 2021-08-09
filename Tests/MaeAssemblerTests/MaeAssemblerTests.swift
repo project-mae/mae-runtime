@@ -21,4 +21,13 @@ final class MaeAssemblerTests: XCTestCase {
 			XCTAssertEqual(token, lexer.next())
 		}
 	}
+	func testSingleNumberLexing() {
+		XCTExpectFailure("Not yet implemented.")
+		let inputs = (1...100)
+			.map { _ in UInt8.random(in: 0...255) }
+		for i in inputs {
+			let lexer = Lexer(String(i).data(using: .ascii)!)
+			XCTAssertEqual(lexer.next(), Token.Literal(i))
+		}
+	}
 }
