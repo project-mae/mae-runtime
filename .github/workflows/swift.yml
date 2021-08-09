@@ -39,7 +39,7 @@ jobs:
 
       - name: Lint
         run:
-          swift-format lint -ir Sources/ Tests/ Package.swift
+          swift-format lint -r Sources/ Tests/ Package.swift
   build:
     runs-on: ubuntu-latest
     steps:
