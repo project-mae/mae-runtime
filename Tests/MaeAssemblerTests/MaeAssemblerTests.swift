@@ -21,8 +21,8 @@ final class MaeAssemblerTests: XCTestCase {
 			XCTAssertEqual(token, lexer.next())
 		}
 	}
-	func testSingleNumberLexing() {
-		XCTExpectFailure("Not yet implemented.")
+	func testSingleNumberLexing() throws {
+		throw XCTSkip("Not yet implemented.")
 		let inputs = (1...100)
 			.map { _ in UInt8.random(in: 0...255) }
 		for i in inputs {
@@ -30,8 +30,8 @@ final class MaeAssemblerTests: XCTestCase {
 			XCTAssertEqual(lexer.next(), Token.Literal(i))
 		}
 	}
-	func testSingleIdentifierLexing() {
-		XCTExpectFailure("Not yet implemented.")
+	func testSingleIdentifierLexing() throws {
+		throw XCTSkip("Not yet implemented.")
 		let inputs = [
 			"HLT", "ZRG", "CP", "SWP", "ZRM", "LDA", "STA", "ADD", "SUB", "MUL", "DIV",
 			"AND", "OR", "NOT", "XOR",
